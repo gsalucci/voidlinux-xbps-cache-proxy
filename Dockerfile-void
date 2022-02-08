@@ -1,0 +1,5 @@
+FROM voidlinux/voidlinux-musl:latest
+RUN xbps-install -Sy bash bash-completion ncurses curl nano
+RUN mkdir -p /etc/xbps.d && \
+    cp /usr/share/xbps.d/00-repository-main.conf /etc/xbps.d/ && \
+    echo "repository=http://xbps-proxy/current/musl" > /etc/xbps.d/00-repository-main.conf

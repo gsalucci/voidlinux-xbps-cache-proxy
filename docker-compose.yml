@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  xbps-proxy:
+    container_name: proxy
+    # ports:
+    #   - "8080:80"
+    image: xbps-proxy
+    build: .
+    volumes:
+      - "D:/Gian/Sources/xbps-proxy/cache:/repo_cache"
+  void:
+    container_name: void
+    build:
+      context: .
+      dockerfile: ./Dockerfile-void
+    image: void-base-musl
+    links:
+      - xbps-proxy
+    tty: true
